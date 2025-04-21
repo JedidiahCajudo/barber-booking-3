@@ -70,3 +70,4 @@ end
 
 gem 'ostruct'
 gem 'devise'
+gem 'sassc-rails'
