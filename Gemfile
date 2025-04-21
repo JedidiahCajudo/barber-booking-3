@@ -69,3 +69,4 @@ end
 # custom
 
 gem 'ostruct'
+gem 'devise'
