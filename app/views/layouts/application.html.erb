@@ -2,10 +2,9 @@
 <html>
   <head>
     <title>BarberBooking3</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -13,8 +12,13 @@
 
   <body>
     <nav>
-      <%= link_to 'Sign Out', destroy_member_session_path, method: :delete, data: { turbo: false } %>
+      <% if member_signed_in? %>
+        <%= button_to 'Sign Out', destroy_member_session_path, method: :delete, class: 'btn btn-danger' %>
+      <% else %>
+        <%= link_to 'Sign In', new_member_session_path, class: 'btn btn-primary' %>
+      <% end %>
     </nav>
+
     <%= yield %>
   </body>
 </html>
