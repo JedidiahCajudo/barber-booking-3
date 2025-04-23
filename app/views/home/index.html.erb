@@ -1,6 +1,56 @@
 <h1>Welcome to the Barber Booking App!</h1>
+
 <% if current_member %>
   <p>You are logged in as <%= current_member.email %></p>
 <% else %>
   <p>You are not logged in.</p>
+<% end %>
+
+<%= link_to 'Book an Appointment', new_appointment_path %>
+
+<h2>Your Appointments</h2>
+<% if current_member %>
+  <% if current_member.role == "barber" %>
+    <p>As a barber, you can see all appointments:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Member</th>
+          <th>Start Time</th>
+          <th>Barber</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Appointment.all.each do |appointment| %>
+          <tr>
+            <td><%= appointment.member.nickname %></td>
+            <td><%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= appointment.barber %></td>
+            <td><%= appointment.notes %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Here are your appointments:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Start Time</th>
+          <th>Barber</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_member.appointments.each do |appointment| %>
+          <tr>
+            <td><%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= appointment.barber %></td>
+            <td><%= appointment.notes %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>

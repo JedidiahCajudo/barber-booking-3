@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member: one
+  start_time: 2025-04-23 17:16:01
+  barber: MyString
+  notes: MyText
+
+two:
+  member: two
+  start_time: 2025-04-23 17:16:01
+  barber: MyString
+  notes: MyText

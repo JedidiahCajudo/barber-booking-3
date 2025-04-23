@@ -1,0 +1,23 @@
+<h1>Appointment Details</h1>
+
+<p>
+  <strong>Member:</strong>
+  <%= @appointment.member ? @appointment.member.nickname : "Unknown" %> <!-- Safely handle nil cases -->
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @appointment.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+  <strong>Barber:</strong>
+  <%= @appointment.barber %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @appointment.notes.present? ? @appointment.notes : "No notes provided" %>
+</p>
+
+<%= link_to 'Back to Appointments', appointments_path %>
