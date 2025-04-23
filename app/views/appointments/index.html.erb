@@ -13,7 +13,7 @@
     <% @appointments.each do |appointment| %>
       <tr>
         <td><%= appointment.member_id %></td>
-        <td><%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= appointment.start_time ? appointment.start_time.strftime("%Y-%m-%d %H:%M") : "N/A" %></td>
         <td><%= appointment.barber %></td>
         <td><%= appointment.notes %></td>
       </tr>
