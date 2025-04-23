@@ -11,6 +11,10 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new
   end
 
+  def show
+    @appointment = Appointment.find(params[:id]) # Find the appointment by ID
+  end
+
   # POST /appointments
   def create
     @appointment = Appointment.new(appointment_params)

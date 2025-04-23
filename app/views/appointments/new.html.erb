@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.datetime_local_field :start_time %>
+    <%= form.datetime_local_field :start_time, min: Time.now.strftime("%Y-%m-%dT%H:%M"), max: "2025-12-23T20:00" %>
   </div>
 
   <div class="field">
