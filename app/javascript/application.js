@@ -1,1 +1,1 @@
-// application.js, after removing Stimulus and controllers
+import { Turbo } from "@hotwired/turbo-rails"

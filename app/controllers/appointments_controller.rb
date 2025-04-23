@@ -35,6 +35,21 @@ class AppointmentsController < ApplicationController
     end
   end
 
+# DELETE /appointments/:id
+  def destroy
+    @appointment = Appointment.find(params[:id])
+
+      logger.debug "Attempting to delete appointment: #{@appointment.id}"
+
+    # Check if the current user is the barber or the member who owns the appointment
+    if current_member.role == "barber" || @appointment.member == current_member
+      @appointment.destroy
+      redirect_to appointments_path, notice: 'Appointment was successfully deleted.'
+    else
+      redirect_to appointments_path, alert: "You are not authorized to delete this appointment."
+    end
+  end
+
   private
 
   def check_barber

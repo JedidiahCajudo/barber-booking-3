@@ -23,6 +23,11 @@
         <td><%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= appointment.barber %></td>
         <td><%= appointment.notes %></td>
+        <td>
+          <% if current_member == appointment.member || current_member.role == "barber" %>
+            <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { confirm: 'Are you sure you want to delete this appointment?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
