@@ -2,3 +2,9 @@
 @import 'header';
 @import 'footer';
 @import 'buttons';
+
+#calendar {
+  width: 100%;
+  height: 600px; /* Adjust the height based on how large you want the calendar */
+  border: 1px solid #ccc; /* Optional border for visibility */
+}
