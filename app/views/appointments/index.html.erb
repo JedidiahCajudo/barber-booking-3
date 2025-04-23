@@ -1,4 +1,11 @@
-<h1>All Appointments</h1>
+<h1>Appointments</h1>
+
+<% if current_member.role == "barber" %>
+  <p>Viewing all appointments</p>
+<% else %>
+  <p>Viewing your own appointments</p>
+  <%= link_to 'New Appointment', new_appointment_path %> <!-- Only show this to members -->
+<% end %>
 
 <table>
   <thead>
@@ -12,13 +19,11 @@
   <tbody>
     <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= appointment.member_id %></td>
-        <td><%= appointment.start_time ? appointment.start_time.strftime("%Y-%m-%d %H:%M") : "N/A" %></td>
+        <td><%= appointment.member.nickname %></td>
+        <td><%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= appointment.barber %></td>
         <td><%= appointment.notes %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Appointment', new_appointment_path %>

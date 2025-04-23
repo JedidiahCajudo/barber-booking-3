@@ -2,7 +2,7 @@
 
 <p>
   <strong>Member:</strong>
-  <%= @appointment.member.nickname %>  <!-- This will display the member's nickname -->
+  <%= @appointment.member ? @appointment.member.nickname : "Unknown" %> <!-- Safely handle nil cases -->
 </p>
 
 <p>

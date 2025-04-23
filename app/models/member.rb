@@ -5,4 +5,9 @@ class Member < ApplicationRecord
 
   # Association
   has_many :appointments, dependent: :destroy # This ensures that appointments are destroyed when the member is destroyed
+
+  def barber?
+    ["barber@test.com"].include?(self.email)
+  end
+
 end
