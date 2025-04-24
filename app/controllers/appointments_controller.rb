@@ -1,6 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :authenticate_member!, only: [:new, :create, :index, :show] # Ensure the user is logged in
-  before_action :check_barber, only: [:index] # Check if user is a barber
+  before_action :authenticate_member!, only: [:new, :create, :index, :show, :destroy]
 
   # GET /appointments
   def index
@@ -13,7 +12,6 @@ class AppointmentsController < ApplicationController
     # Log the appointments to see if we're fetching them correctly
     logger.debug "Appointments: #{@appointments.inspect}"
   end
-
 
   def show
     @appointment = Appointment.find(params[:id])
@@ -35,11 +33,11 @@ class AppointmentsController < ApplicationController
     end
   end
 
-# DELETE /appointments/:id
+  # DELETE /appointments/:id
   def destroy
     @appointment = Appointment.find(params[:id])
 
-      logger.debug "Attempting to delete appointment: #{@appointment.id}"
+    logger.debug "Attempting to delete appointment: #{@appointment.id}"
 
     # Check if the current user is the barber or the member who owns the appointment
     if current_member.role == "barber" || @appointment.member == current_member
@@ -52,8 +50,10 @@ class AppointmentsController < ApplicationController
 
   private
 
+  # No need for a before action check_barber for index anymore
   def check_barber
-    redirect_to root_path, alert: "You are not authorized to view this page" unless current_member.role == "barber"
+    # You can leave this method for other controller actions, if necessary
+    # But for now, it’s only relevant for destroy, as you've already added checks there.
   end
 
   def appointment_params

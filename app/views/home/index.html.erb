@@ -19,6 +19,7 @@
           <th>Start Time</th>
           <th>Barber</th>
           <th>Notes</th>
+          <th>Actions</th> <!-- Add Actions column for delete -->
         </tr>
       </thead>
       <tbody>
@@ -28,6 +29,12 @@
             <td><%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= appointment.barber %></td>
             <td><%= appointment.notes %></td>
+            <td>
+              <!-- Show delete button for barbers or members who own the appointment -->
+              <% if current_member.role == "barber" || appointment.member == current_member %>
+                <%= link_to 'Delete', appointment_path(appointment), method: :delete, data: { confirm: 'Are you sure you want to delete this appointment?' } %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -40,6 +47,7 @@
           <th>Start Time</th>
           <th>Barber</th>
           <th>Notes</th>
+          <th>Actions</th> <!-- Add Actions column for delete -->
         </tr>
       </thead>
       <tbody>
@@ -48,6 +56,13 @@
             <td><%= appointment.start_time.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= appointment.barber %></td>
             <td><%= appointment.notes %></td>
+            <td>
+              <!-- Show delete button only for the member who owns the appointment -->
+              <% if current_member == appointment.member || current_member.role == "barber" %>
+                <%= link_to 'Delete', appointment_path(appointment),
+                  data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this appointment?' } %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
