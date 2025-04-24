@@ -71,4 +71,3 @@ end
 gem 'ostruct'
 gem 'devise'
 gem 'sassc-rails'
-gem 'rails-ujs'
