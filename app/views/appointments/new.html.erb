@@ -27,6 +27,18 @@
     <%= form.text_area :notes %>
   </div>
 
+    <!-- Hairstyle selection grid -->
+    <h2>Select a Hairstyle</h2>
+    <div class="hairstyle-grid">
+      <% @hairstyles.each do |hairstyle| %>
+        <div class="hairstyle-card">
+          <%= image_tag(hairstyle.image, alt: hairstyle.name) %>
+          <h3><%= hairstyle.name %></h3>
+          <%= form.radio_button :hairstyle_id, hairstyle.id %>
+        </div>
+      <% end %>
+    </div>
+
   <div class="actions">
     <%= form.submit "Create Appointment" %>
   </div>
