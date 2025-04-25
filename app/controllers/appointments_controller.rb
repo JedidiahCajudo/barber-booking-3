@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   def index
     if current_member.role == "barber"
-      @appointments = Appointment.all
+      @appointments = Appointment.allan
     else
       @appointments = current_member.appointments
     end
@@ -20,11 +20,17 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     @appointment = Appointment.new
+    @hairstyles = Hairstyle.all #fetch
   end
 
   # POST /appointments
   def create
     @appointment = current_member.appointments.new(appointment_params)
+
+    # Check if the "Decide Later" option was selected
+    if @appointment.hairstyle_id == 'decide_later'
+      @appointment.hairstyle_id = nil # Set hairstyle_id to nil if "Decide Later" was chosen
+    end
 
     if @appointment.save
       redirect_to @appointment, notice: 'Appointment was successfully created.'
@@ -32,6 +38,7 @@ class AppointmentsController < ApplicationController
       render :new
     end
   end
+
 
   # DELETE /appointments/:id
   def destroy
@@ -57,6 +64,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:start_time, :barber, :notes)
+    params.require(:appointment).permit(:start_time, :barber, :notes, :hairstyle_id)
   end
+
 end
