@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   def index
     if current_member.role == "barber"
-      @appointments = Appointment.all
+      @appointments = Appointment.allan
     else
       @appointments = current_member.appointments
     end
@@ -20,6 +20,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     @appointment = Appointment.new
+    @hairstyles = Hairstyle.all #fetch
   end
 
   # POST /appointments
