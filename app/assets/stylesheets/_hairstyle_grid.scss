@@ -19,3 +19,15 @@
   object-fit: cover;
   border-radius: 8px;
 }
+
+.decide-later {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12rem;
+  background-color: #e0e0e0; /* Light gray for "Decide Later" card */
+  color: #333; /* Darker text */
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+}

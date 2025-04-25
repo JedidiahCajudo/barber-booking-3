@@ -27,12 +27,18 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = current_member.appointments.new(appointment_params)
 
+    # Check if the "Decide Later" option was selected
+    if @appointment.hairstyle_id == 'decide_later'
+      @appointment.hairstyle_id = nil # Set hairstyle_id to nil if "Decide Later" was chosen
+    end
+
     if @appointment.save
       redirect_to @appointment, notice: 'Appointment was successfully created.'
     else
       render :new
     end
   end
+
 
   # DELETE /appointments/:id
   def destroy
@@ -58,6 +64,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:start_time, :barber, :notes)
+    params.require(:appointment).permit(:start_time, :barber, :notes, :hairstyle_id)
   end
+
 end
