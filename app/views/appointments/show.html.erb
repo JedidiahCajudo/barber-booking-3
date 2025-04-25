@@ -20,4 +20,17 @@
   <%= @appointment.notes.present? ? @appointment.notes : "No notes provided" %>
 </p>
 
+<h2>Hairstyle</h2>
+<% if @appointment.hairstyle_id.present? %>
+  <!-- If a hairstyle was selected, display it -->
+  <div class="hairstyle-info">
+    <% hairstyle = Hairstyle.find(@appointment.hairstyle_id) %>
+    <%= image_tag(hairstyle.image, alt: hairstyle.name) %>
+    <h3><%= hairstyle.name %></h3>
+  </div>
+<% else %>
+  <!-- If no hairstyle was selected, show 'Decide Later' message -->
+  <p>You have chosen to decide on the hairstyle later.</p>
+<% end %>
+
 <%= link_to 'Back to Appointments', appointments_path %>
