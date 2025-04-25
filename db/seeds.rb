@@ -11,14 +11,11 @@
 Hairstyle.destroy_all  # This clears existing records
 
 Hairstyle.create([
-  { name: 'Buzz Cut', image: 'buzz_cut.jpg' },
-  { name: 'Pompadour', image: 'pompadour.jpg' },
-  { name: 'Crew Cut', image: 'crew_cut.jpg' },
-  { name: 'Modern Mullet', image: 'modern_mullet.jpg' },
-  { name: 'Quiff', image: 'quiff.jpg' },
-  { name: 'Side Part', image: 'side_part.jpg' },
-  { name: 'French Crop', image: 'french_crop.jpg' },
-  { name: 'Caesar Cut', image: 'caesar_cut.jpg' },
-  { name: 'Comb Over', image: 'comb_over.jpg' },
-  { name: 'Bro Flow', image: 'bro_flow.jpg' },
+  { name: 'Curly Mullet', image: 'curly_mullet.jpg' },
+  { name: 'Curtain Mullet', image: 'curtain_mullet.jpg' },
+  { name: 'Mash Perm', image: 'mash_perm.jpg' },
+  { name: 'Medium Mullet', image: 'medium_mullet.jpg' },
+  { name: 'Short Mullet', image: 'short_mullet.jpg' },
+  { name: 'Spiky Mullet', image: 'spiky_mullet.jpg' },
+  { name: 'Wavy Mullet', image: 'wavy_mullet.jpg' },
 ])
