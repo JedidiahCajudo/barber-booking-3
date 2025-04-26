@@ -38,7 +38,7 @@
 }
 
 .hairstyle-card input[type="radio"]:checked + .hairstyle-card-label .hairstyle-card {
-  border-color: #007bff; /* Highlight border when selected */
+  border-color: black; /* Highlight border when selected */
   transform: scale(1.05); /* Keep the card scaled up once selected */
 }
 
