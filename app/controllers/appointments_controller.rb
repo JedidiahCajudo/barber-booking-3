@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   def index
     if current_member.role == "barber"
-      @appointments = Appointment.allan
+      @appointments = Appointment.all
     else
       @appointments = current_member.appointments
     end
