@@ -14,6 +14,7 @@
       <th>Start Time</th>
       <th>Barber</th>
       <th>Notes</th>
+      <th>Actions</th> <!-- Add an Actions column for the "View" link -->
     </tr>
   </thead>
   <tbody>
@@ -24,6 +25,7 @@
         <td><%= appointment.barber %></td>
         <td><%= appointment.notes %></td>
         <td>
+          <%= link_to 'View', appointment_path(appointment) %> <!-- Link to the show page -->
           <% if current_member == appointment.member || current_member.role == "barber" %>
             <%= link_to 'Delete', appointment_path(appointment),
               data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this appointment?' } %>
