@@ -1,38 +1,38 @@
-<h1>Appointment Details</h1>
+<div>
+  <h2>Appointment Details</h2>
 
-<p>
-  <strong>Member:</strong>
-  <%= @appointment.member ? @appointment.member.nickname : "Unknown" %> <!-- Safely handle nil cases -->
-</p>
+  <p>
+    <strong>Member:</strong>
+    <%= @appointment.member ? @appointment.member.nickname : "Unknown" %>
+  </p>
 
-<p>
-  <strong>Start Time:</strong>
-  <%= @appointment.start_time.strftime("%Y-%m-%d %H:%M") %>
-</p>
+  <p>
+    <strong>Start Time:</strong>
+    <%= @appointment.start_time.strftime("%Y-%m-%d %H:%M") %>
+  </p>
 
-<p>
-  <strong>Barber:</strong>
-  <%= @appointment.barber %>
-</p>
+  <p>
+    <strong>Barber:</strong>
+    <%= @appointment.barber %>
+  </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @appointment.notes.present? ? @appointment.notes : "No notes provided" %>
-</p>
+  <p>
+    <strong>Notes:</strong>
+    <%= @appointment.notes.present? ? @appointment.notes : "No notes provided" %>
+  </p>
 
-<h2>Hairstyle</h2>
-<% if @appointment.hairstyle_id.present? %>
-  <!-- If a hairstyle was selected, display it -->
-  <div class="hairstyle-card">
-    <% hairstyle = Hairstyle.find(@appointment.hairstyle_id) %>
-    <%= image_tag(hairstyle.image, alt: hairstyle.name, class: "hairstyle-img") %>
-    <h3><%= hairstyle.name %></h3>
-  </div>
-<% else %>
-  <!-- If no hairstyle was selected, show 'Decide Later' message -->
-  <div class="hairstyle-card decide-later">
-    <p>Decide Later</p>
-  </div>
-<% end %>
+  <h3>Hairstyle</h3>
+  <% if @appointment.hairstyle_id.present? %>
+    <div class="hairstyle-card">
+      <% hairstyle = Hairstyle.find(@appointment.hairstyle_id) %>
+      <%= image_tag(hairstyle.image, alt: hairstyle.name, class: "hairstyle-img") %>
+      <h3><%= hairstyle.name %></h3>
+    </div>
+  <% else %>
+    <div class="hairstyle-card decide-later">
+      <p>Decide Later</p>
+    </div>
+  <% end %>
 
-<%= link_to 'Back to Appointments', appointments_path %>
+  <%= link_to 'Back to Appointments', appointments_path %>
+</div>
